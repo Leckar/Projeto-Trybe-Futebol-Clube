@@ -11,6 +11,7 @@ class App {
 
     // Não remover essa rota
     this.app.get('/', (_req, res) => res.json({ ok: true }));
+    this.initRoutes();
   }
 
   private config():void {
