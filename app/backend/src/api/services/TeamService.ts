@@ -10,7 +10,10 @@ export default class TeamService implements ITeamService {
     return result as Team[];
   }
 
-  async getById(id: number | string): Promise<Team | null> {
+  async getById(id: string): Promise<Team | null> {
+    // if (Number.isNaN(id)) {
+    //   throw new Error();
+    // }
     const result = await this.model.findByPk(id);
     return result;
   }

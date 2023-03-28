@@ -28,6 +28,16 @@ const teamsSqlData = [
   },
 ];
 
+const teamSqlById = {
+  id: 2,
+  teamName: "Bahia"
+};
+
+const teamById = {
+  "id": 2,
+  "teamName": "Bahia"
+};
+
 export default teamsJSON;
 
-export { teamsSqlData };
+export { teamsSqlData, teamSqlById, teamById };
