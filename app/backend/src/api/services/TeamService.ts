@@ -1,4 +1,5 @@
 import { ModelStatic } from 'sequelize';
+
 import Team from '../../database/models/TeamModel';
 import ITeamService from '../interfaces/ITeamService';
 
@@ -15,10 +16,8 @@ export default class TeamService implements ITeamService {
   }
 
   async getById(id: string): Promise<Team | null> {
-    // if (Number.isNaN(id)) {
-    //   throw new Error();
-    // }
     const result = await this._model.findByPk(id);
-    return result;
+    if (result) return result;
+    return null;
   }
 }

@@ -3,6 +3,7 @@ import {
   INTEGER,
   STRING,
 } from 'sequelize';
+
 import db from '.';
 
 class User extends Model {

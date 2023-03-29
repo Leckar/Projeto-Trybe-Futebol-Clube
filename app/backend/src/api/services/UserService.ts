@@ -1,7 +1,7 @@
 import { ModelStatic } from 'sequelize';
 import { compareSync } from 'bcryptjs';
 
-import { LoginCredentials } from '../../types';
+import { LoginCredentials, Payload } from '../../types';
 import User from '../../database/models/UserModel';
 import IUserService from '../interfaces/IUserService';
 import { generateToken } from '../../auth/JWT';
@@ -16,12 +16,18 @@ export default class UserService implements IUserService {
 
   async login(dto: LoginCredentials): Promise<string | null> {
     const { email, password } = dto;
-    if (!loginValidation(dto)) return null;
+    if (!loginValidation({ email, password })) return null;
     const [result] = await this._model.findAll({ where: { email } });
     if (result && compareSync(password, result.password)) {
-      const { username, role, id } = result;
-      return generateToken({ username, role, id });
+      const { username } = result;
+      return generateToken({ username });
     }
     return null;
+  }
+
+  async roleFetch(payload: Payload): Promise<string> {
+    const { username } = payload;
+    const [result] = await this._model.findAll({ where: { username } });
+    return result.role;
   }
 }

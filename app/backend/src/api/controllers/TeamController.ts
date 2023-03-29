@@ -1,8 +1,9 @@
 import { Request, Response } from 'express';
+
 import ITeamService from '../interfaces/ITeamService';
 import status from '../../utils/HttpStatuses';
 
-const { ok } = status;
+const { ok, notFound } = status;
 
 export default class TeamController {
   private _service: ITeamService;
@@ -19,6 +20,7 @@ export default class TeamController {
   async getById(req: Request, res: Response) {
     const { id } = req.params;
     const result = await this._service.getById(id);
-    res.status(ok).json(result);
+    if (result) return res.status(ok).json(result);
+    res.status(notFound).json({ message: 'Invalid team id' });
   }
 }
