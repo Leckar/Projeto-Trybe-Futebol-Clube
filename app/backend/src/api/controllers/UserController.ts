@@ -17,7 +17,6 @@ export default class UserController {
     if (!email || !password) {
       return res.status(badRequest).json({ message: 'All fields must be filled' });
     }
-    // const dto = req.body;
     const token = await this._service.login({ email, password });
     if (token) return res.status(ok).json({ token });
     return res.status(unauthorized).json({ message: 'Invalid email or password' });
