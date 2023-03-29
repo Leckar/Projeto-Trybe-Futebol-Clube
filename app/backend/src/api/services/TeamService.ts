@@ -3,10 +3,14 @@ import Team from '../../database/models/TeamModel';
 import ITeamService from '../interfaces/ITeamService';
 
 export default class TeamService implements ITeamService {
-  private model: ModelStatic<Team> = Team;
+  private _model: ModelStatic<Team>;
+
+  constructor() {
+    this._model = Team;
+  }
 
   async getAll(): Promise<Team[]> {
-    const result = await this.model.findAll();
+    const result = await this._model.findAll();
     return result as Team[];
   }
 
@@ -14,7 +18,7 @@ export default class TeamService implements ITeamService {
     // if (Number.isNaN(id)) {
     //   throw new Error();
     // }
-    const result = await this.model.findByPk(id);
+    const result = await this._model.findByPk(id);
     return result;
   }
 }

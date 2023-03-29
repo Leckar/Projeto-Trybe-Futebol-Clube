@@ -2,27 +2,26 @@ import * as jwt from 'jsonwebtoken';
 
 import { Payload } from '../types';
 
-export default class Token {
-  private _secret: string;
+const secret = process.env.JWT_SECRET as string;
 
-  constructor() {
-    this._secret = process.env.JWT_SECRET as string;
-  }
+const generateToken = (payload: Payload): string => {
+  const token = jwt.sign(
+    payload,
+    secret,
+    {
+      algorithm: 'HS256',
+      expiresIn: '1d',
+    },
+  );
+  return token;
+};
 
-  generate = (payload: Payload): string => {
-    const token = jwt.sign(
-      payload,
-      this._secret,
-      {
-        algorithm: 'HS256',
-        expiresIn: '1d',
-      },
-    );
-    return token;
-  };
+const validateToken = (token: string): Payload => {
+  const payload = jwt.verify(token, secret);
+  return payload as Payload;
+};
 
-  validate = (token: string): Payload => {
-    const payload = jwt.verify(token, this._secret);
-    return payload as Payload;
-  };
-}
+export {
+  generateToken,
+  validateToken,
+};
