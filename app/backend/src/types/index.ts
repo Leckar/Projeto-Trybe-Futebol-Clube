@@ -15,3 +15,8 @@ export type Match = {
   awayTeamGoals: number,
   inProgress: boolean,
 };
+
+export type editMatchData = {
+  homeTeamGoals: number,
+  awayTeamGoals: number,
+};

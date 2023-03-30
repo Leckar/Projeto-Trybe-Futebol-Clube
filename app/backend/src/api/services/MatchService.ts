@@ -1,5 +1,6 @@
 import { ModelStatic } from 'sequelize';
 
+import { editMatchData } from '../../types';
 import Team from '../../database/models/TeamModel';
 import Match from '../../database/models/MatchModel';
 import IMatchService from '../interfaces/IMatchService';
@@ -33,5 +34,9 @@ export default class MatchService implements IMatchService {
 
   async endMatch(id: string | number): Promise<void> {
     await this._model.update({ inProgress: false }, { where: { id } });
+  }
+
+  async editMatch(id: string | number, data: editMatchData): Promise<void> {
+    this._model.update(data, { where: { id } });
   }
 }
