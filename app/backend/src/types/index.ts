@@ -20,3 +20,8 @@ export type editMatchData = {
   homeTeamGoals: number,
   awayTeamGoals: number,
 };
+
+export type newMatchData = {
+  homeTeamId: number,
+  awayTeamId: number,
+} & editMatchData;

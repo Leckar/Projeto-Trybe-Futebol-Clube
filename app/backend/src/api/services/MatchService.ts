@@ -1,6 +1,6 @@
 import { ModelStatic } from 'sequelize';
 
-import { editMatchData } from '../../types';
+import { editMatchData, newMatchData } from '../../types';
 import Team from '../../database/models/TeamModel';
 import Match from '../../database/models/MatchModel';
 import IMatchService from '../interfaces/IMatchService';
@@ -12,6 +12,16 @@ export default class MatchService implements IMatchService {
   constructor() {
     this._model = Match;
     this._teamModel = Team;
+  }
+
+  async create(data: newMatchData): Promise<string | Match> {
+    const { homeTeamId, awayTeamId } = data;
+    if (homeTeamId === awayTeamId) return 'duplicate';
+    const validateHomeTeam = await this._teamModel.findByPk(homeTeamId);
+    const validateAwayTeam = await this._teamModel.findByPk(awayTeamId);
+    if (!validateHomeTeam || !validateAwayTeam) return 'invalid';
+    const result = await this._model.create({ ...data, inProgress: true });
+    return result as Match;
   }
 
   async getMatches(matchState: string): Promise<Match[]> {

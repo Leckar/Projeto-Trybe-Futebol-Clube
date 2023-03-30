@@ -17,23 +17,23 @@ export default class MatchController {
     this._service = match;
   }
 
-  // async createMatch(req: Request, res: Response): Promise<Response | void> {
-  //   const data = req.body;
-  //   const result = await this._service.create(data);
-  //   if (result.message) {
-  //     switch (result.message) {
-  //       case 'duplicate':
-  //         return res.status(unprocessableEntity)
-  //           .json({ message: 'It is not possible to create a match with two equal teams' });
-  //       case 'invalid':
-  //         return res.status(notFound)
-  //           .json({ message: 'There is no team with such id!' });
-  //       default:
-  //         break;
-  //     }
-  //   }
-  //   res.status(created).json('test');
-  // }
+  async createMatch(req: Request, res: Response): Promise<Response | void> {
+    const data = req.body;
+    const result = await this._service.create(data);
+    if (typeof result === 'string') {
+      switch (result) {
+        case 'duplicate':
+          return res.status(unprocessableEntity)
+            .json({ message: 'It is not possible to create a match with two equal teams' });
+        case 'invalid':
+          return res.status(notFound)
+            .json({ message: 'There is no team with such id!' });
+        default:
+          break;
+      }
+    }
+    res.status(created).json(result);
+  }
 
   async editMatch(req: Request, res: Response): Promise<Response | void> {
     const { id } = req.params;
