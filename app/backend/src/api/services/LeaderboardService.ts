@@ -13,10 +13,10 @@ export default class LeaderboardService implements ILeaderboardService {
     this._model = Team;
   }
 
-  // O aluno Rafael Tourinho da turma 23 tribo B me ajudou com o fluxo 4 do projeto TFC.
-  // Ele me mostrou como faze a busca pela associação e indicou a seção da documentação do sequelize
-  // a respeito do de instâncias (https://sequelize.org/v3/docs/instances/#values-of-an-instance)
-  // para que eu pudesse faciliar o processamento de dados.
+  // O aluno Rafael Tourinho da turma 23 tribo B me ajudou com a função getAll do projeto TFC.
+  // Ele me indicou esse método para fazer a busca com as associações e indicou a seção da documentação do sequelize
+  // a respeito do método get de instâncias (https://sequelize.org/v3/docs/instances/#values-of-an-instance)
+  // para leitura.
   async getAll(): Promise<ProcessedTeam[]> {
     const result = await this._model.findAll({
       include: [
@@ -30,8 +30,7 @@ export default class LeaderboardService implements ILeaderboardService {
           where: { inProgress: false } },
       ],
     }) as UnprocessedTeam[];
-    const resultValues = result.map((t: UnprocessedTeam) => t.get({ plain: true }));
-    const processedResult = resultValues.map((t) => new LeaderboardFormatter(t));
+    const processedResult = result.map((t) => new LeaderboardFormatter(t));
     return descendingOrder(processedResult) as ProcessedTeam[];
   }
 
@@ -44,8 +43,7 @@ export default class LeaderboardService implements ILeaderboardService {
           where: { inProgress: false } },
       ],
     }) as UnprocessedTeam[];
-    const resultValues = result.map((t: UnprocessedTeam) => t.get({ plain: true }));
-    const processedResult = resultValues.map((t) => new LeaderboardFormatter(t));
+    const processedResult = result.map((t) => new LeaderboardFormatter(t));
     return descendingOrder(processedResult) as ProcessedTeam[];
   }
 
@@ -58,8 +56,7 @@ export default class LeaderboardService implements ILeaderboardService {
           where: { inProgress: false } },
       ],
     }) as UnprocessedTeam[];
-    const resultValues = result.map((t: UnprocessedTeam) => t.get({ plain: true }));
-    const processedResult = resultValues.map((t) => new LeaderboardFormatter(t));
+    const processedResult = result.map((t) => new LeaderboardFormatter(t));
     return descendingOrder(processedResult) as ProcessedTeam[];
   }
 }

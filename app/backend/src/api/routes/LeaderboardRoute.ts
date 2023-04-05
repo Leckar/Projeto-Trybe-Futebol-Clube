@@ -12,3 +12,6 @@ router.get('/home', (req, res) => controller.getHomeLeaderboard(req, res));
 router.get('/', (req, res) => controller.getLeaderboard(req, res));
 
 export default router;
+export {
+  service,
+};

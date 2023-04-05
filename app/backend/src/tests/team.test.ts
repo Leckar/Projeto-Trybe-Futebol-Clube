@@ -6,7 +6,7 @@ import chaiHttp = require('chai-http');
 import { app } from '../app';
 import Team from '../database/models/TeamModel';
 import teamsJSON, { teamsSqlData, teamById, teamSqlById } from './mocks/teamMock';
-import status from '../utils/HttpStatuses'
+import status from '../utils/HttpStatuses';
 
 chai.use(chaiHttp);
 

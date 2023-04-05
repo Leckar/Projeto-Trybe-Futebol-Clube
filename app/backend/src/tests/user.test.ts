@@ -5,7 +5,7 @@ import chaiHttp = require('chai-http');
 
 import { app } from '../app';
 import User from '../database/models/UserModel';
-import status from '../utils/HttpStatuses'
+import status from '../utils/HttpStatuses';
 import { findAllReturn,
   invalidEmailJson,
   invalidPwdJson,
@@ -13,7 +13,7 @@ import { findAllReturn,
   noPwdJson,
   validLoginJson, 
   wrongPwdJson,
-} from './mocks/UserMock';
+} from './mocks/userMock';
 import * as JWT from '../auth/JWT';
 import { Payload } from '../types';
 
@@ -39,17 +39,17 @@ describe('The endpoint "/login" must return the correct response with the expect
     const response = await chai.request(app).post('/login').send(validLoginJson);
     expect(response.status).to.be.eq(ok);
   });
-  it('should return a unauthorized status as response for a login request with an invalid email', async () => {
+  it('should return an unauthorized status as response for a login request with an invalid email', async () => {
     const response = await chai.request(app).post('/login').send(invalidEmailJson);
     expect(response.status).to.be.eq(unauthorized);
     expect(response.body).to.be.deep.eq({ message: 'Invalid email or password' });
   });
-  it('should return a unauthorized status as response for a login request with an invalid password', async () => {
+  it('should return an unauthorized status as response for a login request with an invalid password', async () => {
     const response = await chai.request(app).post('/login').send(invalidPwdJson);
     expect(response.status).to.be.eq(unauthorized);
     expect(response.body).to.be.deep.eq({ message: 'Invalid email or password' });
   });
-  it('should return a unauthorized status as response for a login request with a wrong password', async () => {
+  it('should return an unauthorized status as response for a login request with a wrong password', async () => {
     sinon.stub(User, 'findAll').resolves(findAllReturn as User[]);
     const response = await chai.request(app).post('/login').send(wrongPwdJson);
     expect(response.status).to.be.eq(unauthorized);
@@ -66,12 +66,12 @@ describe('The endpoint "/login/roles" must return the correct response with the 
     expect(response.status).to.be.eq(ok);
     expect(response.body).to.be.deep.eq({ role: 'admin' });
   });
-  it('should return a unauthorized status as response for a request without a token', async () => {
+  it('should return an unauthorized status as response for a request without a token', async () => {
     const response = await chai.request(app).get('/login/role');
     expect(response.status).to.be.eq(unauthorized);
     expect(response.body).to.be.deep.eq({ message: 'Token not found' });
   });
-  it('should return a unauthorized status as response for a login request with an invalid token', async () => {
+  it('should return an unauthorized status as response for a login request with an invalid token', async () => {
     const response = await chai.request(app).get('/login/role').set('Authorization', 'testtoken');
     expect(response.status).to.be.eq(unauthorized);
     expect(response.body).to.be.deep.eq({ message: 'Token must be a valid token' });

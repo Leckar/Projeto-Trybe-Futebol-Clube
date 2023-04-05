@@ -61,6 +61,6 @@ export default class LeaderboardFormatter {
   }
 
   private efficiencyCalc(): void {
-    this.efficiency = (this.totalPoints / (this.totalGames * 3)) * 100;
+    this.efficiency = Number(((this.totalPoints / (this.totalGames * 3)) * 100).toFixed(2));
   }
 }

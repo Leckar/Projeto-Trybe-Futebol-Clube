@@ -1,4 +1,5 @@
 import Team from '../database/models/TeamModel';
+import Match from '../database/models/MatchModel';
 
 export type Payload = {
   username: string,
@@ -9,14 +10,14 @@ export type LoginCredentials = {
   password: string,
 };
 
-export type Match = {
-  id: number,
-  homeTeamId: number,
-  homeTeamGoals: number,
-  awayTeamId: number,
-  awayTeamGoals: number,
-  inProgress: boolean,
-};
+export type MatchForTests = {
+  homeTeam: {
+    teamName: string,
+  },
+  awayTeam: {
+    teamName: string,
+  },
+} & Match;
 
 export type editMatchData = {
   homeTeamGoals: number,
