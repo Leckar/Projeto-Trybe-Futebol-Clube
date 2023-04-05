@@ -1,3 +1,5 @@
+import Team from '../database/models/TeamModel';
+
 export type Payload = {
   username: string,
 };
@@ -25,3 +27,21 @@ export type newMatchData = {
   homeTeamId: number,
   awayTeamId: number,
 } & editMatchData;
+
+export type UnprocessedTeam = {
+  homeMatches?: [ { homeTeamGoals: number, awayTeamGoals: number } ],
+  awayMatches?: [ { homeTeamGoals: number, awayTeamGoals: number } ],
+} & Team;
+
+export type ProcessedTeam = {
+  name: string,
+  totalPoints: number,
+  totalGames: number,
+  totalVictories: number,
+  totalDraws: number,
+  totalLosses: number,
+  goalsFavor: number,
+  goalsOwn: number,
+  goalsBalance: number,
+  efficiency: number,
+};
