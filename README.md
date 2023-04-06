@@ -15,12 +15,12 @@ Front-end: O front-end, com exceção da Dockerfile, já foi desenvolvido pela T
 Docker: O docker-compose tem a responsabilidade de unir todos os serviços conteinerizados (backend, frontend e db) e subir o projeto completo com o comando npm run compose:up. 
 
 ### Requisitos:
-Implementar uma API utilizando o método TDD;
-Integrar, através do docker-compose, as aplicações para que elas funcionem consumindo um banco de dados;
-Construir um back-end dockerizado utilizando modelagem de dados através do Sequelize;
-Implementar regras de negócio para popular adequadamente a tabela disponível no front-end que será exibida para a pessoa usuária do sistema;
-Ter um relacionamento entre as tabelas teams e matches para fazer as atualizações das partidas;
-Requerer um token para acessar as tabelas de partida e o endpoint de role, portanto a pessoa deverá estar logada para fazer as alterações.
+ - Implementar uma API utilizando o método TDD;
+ - Integrar, através do docker-compose, as aplicações para que elas funcionem consumindo um banco de dados;
+ - Construir um back-end dockerizado utilizando modelagem de dados através do Sequelize;
+ - Implementar regras de negócio para popular adequadamente a tabela disponível no front-end que será exibida para a pessoa usuária do sistema;
+ - Ter um relacionamento entre as tabelas teams e matches para fazer as atualizações das partidas;
+ - Requerer um token para acessar as tabelas de partida e o endpoint de role, portanto a pessoa deverá estar logada para fazer as alterações.
 
 ### Como executar:
  - Clone este repositório em sua máquina local.
