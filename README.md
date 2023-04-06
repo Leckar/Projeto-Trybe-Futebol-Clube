@@ -35,7 +35,6 @@ Docker: O docker-compose tem a responsabilidade de unir todos os serviços conte
 ```
  3. Crie um arquivo .env e atribua as variáveis de ambiente requeridas pelo projeto.
 ```shell
- JWT_SECRET=jwt_secret
  APP_PORT=3001
  DB_USER=seu_user
  DB_PASS=sua_senha
