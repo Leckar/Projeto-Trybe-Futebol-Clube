@@ -21,17 +21,19 @@ Docker: O docker-compose tem a responsabilidade de unir todos os serviços conte
  - Implementar regras de negócio para popular adequadamente a tabela disponível no front-end que será exibida para a pessoa usuária do sistema;
  - Ter um relacionamento entre as tabelas teams e matches para fazer as atualizações das partidas;
  - Requerer um token para acessar as tabelas de partida e o endpoint de role, portanto a pessoa deverá estar logada para fazer as alterações.
+ 
+ #### Para rodar o projeto é necessário ter o node 16, o docker e o docker-compose instalados
 
-### Como executar:
- - Clone este repositório em sua máquina local.
+### Instalação e execução:
+ 1. Clone este repositório em sua máquina local.
  ```bash
   git clone git@github.com:Leckar/Projeto-Trybe-Futebol-Clube.git
  ```
- - Instale as dependências.
+ 2. Instale as dependências.
 ```bash
   npm install
 ```
- - Crie um arquivo .env e atribua as variáveis de ambiente requeridas pelo projeto.
+ 3. Crie um arquivo .env e atribua as variáveis de ambiente requeridas pelo projeto.
 ```shell
  JWT_SECRET=jwt_secret
  APP_PORT=3001
@@ -40,11 +42,9 @@ Docker: O docker-compose tem a responsabilidade de unir todos os serviços conte
  DB_HOST=localhost
  DB_PORT=3002
 ``` 
- - Instale o Docker e o Docker Compose em sua máquina.
- 
- - No diretório raiz do projeto, execute o comando npm run compose:up para subir o projeto completo.
+ 4. No diretório raiz do projeto, execute o comando npm run compose:up para subir o projeto completo.
 ```bash
   npm run compose:up
 ```
- - Acesse o front-end em http://localhost:3000/ e teste as funcionalidades da API.
+ 5. Acesse o front-end em http://localhost:3000/ e teste as funcionalidades da API.
 
