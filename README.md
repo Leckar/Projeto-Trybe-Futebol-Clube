@@ -14,7 +14,7 @@ Front-end: O front-end, com exceção da Dockerfile, já foi desenvolvido pela T
 
 Docker: O docker-compose tem a responsabilidade de unir todos os serviços conteinerizados (backend, frontend e db) e subir o projeto completo com o comando npm run compose:up. 
 
-### Requisitos:
+## Requisitos:
  - Implementar uma API utilizando o método TDD;
  - Integrar, através do docker-compose, as aplicações para que elas funcionem consumindo um banco de dados;
  - Construir um back-end dockerizado utilizando modelagem de dados através do Sequelize;
@@ -24,7 +24,7 @@ Docker: O docker-compose tem a responsabilidade de unir todos os serviços conte
  
  #### Para rodar o projeto é necessário ter o node 16, o docker e o docker-compose instalados
 
-### Instalação e execução:
+## Instalação e execução:
  1. Clone este repositório em sua máquina local.
  ```bash
   git clone git@github.com:Leckar/Projeto-Trybe-Futebol-Clube.git
