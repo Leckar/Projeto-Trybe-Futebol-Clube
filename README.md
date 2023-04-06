@@ -1,7 +1,7 @@
 # Trybe Futebol Clube - API de gerenciamento de partidas
 
 
-Este projeto tem como objetivo construir um back-end dockerizado utilizando modelagem de dados através do Sequelize e seguindo as regras de negócio que atendam aos requisitos do projeto. A API será capaz de ser consumida por um front-end já provido.
+Este projeto tem como objetivo construir um back-end dockerizado utilizando modelagem de dados através do Sequelize e seguindo as regras de negócio que atendam aos requisitos do projeto. A API é capaz de ser consumida por um front-end já provido.
 
 ## Estrutura do projeto
 O projeto é composto por quatro entidades importantes para sua estrutura:
@@ -24,9 +24,27 @@ Requerer um token para acessar as tabelas de partida e o endpoint de role, porta
 
 ### Como executar:
  - Clone este repositório em sua máquina local.
- - Rode o comando npm install no terminal para instalar as dependências.
- - Crie um arquivo .env e atribua as variáveis de ambiente requeridas pelo projeto(podem ser encontradas no docker-compose.yml).
+ ```bash
+  git clone git@github.com:Leckar/Projeto-Trybe-Futebol-Clube.git
+ ```
+ - Instale as dependências.
+```bash
+  npm install
+```
+ - Crie um arquivo .env e atribua as variáveis de ambiente requeridas pelo projeto.
+```shell
+ JWT_SECRET=jwt_secret
+ APP_PORT=3001
+ DB_USER=seu_user
+ DB_PASS=sua_senha
+ DB_HOST=localhost
+ DB_PORT=3002
+``` 
  - Instale o Docker e o Docker Compose em sua máquina.
+ 
  - No diretório raiz do projeto, execute o comando npm run compose:up para subir o projeto completo.
+```bash
+  npm run compose:up
+```
  - Acesse o front-end em http://localhost:3000/ e teste as funcionalidades da API.
 
